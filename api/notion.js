@@ -6,9 +6,10 @@ export default async function handler(req, res) {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${process.env.NOTION_API_TOKEN}`,
-          "Notion-Version": "2025-09-13",
+          "Notion-Version": "2022-06-28", // Updated to a valid past date
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({}), // Add an empty body for POST request
       }
     );
 
