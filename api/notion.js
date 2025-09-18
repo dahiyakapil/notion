@@ -20,6 +20,7 @@ export default async function handler(req, res) {
     );
 
     const data = await response.json();
+    console.log("Notion API Response:", data); // Add this line to inspect the data structure
     res.status(200).json(data);
   } catch (err) {
     res.status(500).json({ error: err.message });
