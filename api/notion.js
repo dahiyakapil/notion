@@ -1,4 +1,10 @@
 export default async function handler(req, res) {
+  if (!process.env.NOTION_API_TOKEN || !process.env.NOTION_DATABASE_ID) {
+    return res.status(500).json({
+      error: "Notion API token or database ID is not set.",
+    });
+  }
+
   try {
     const response = await fetch(
       `https://api.notion.com/v1/databases/${process.env.NOTION_DATABASE_ID}/query`,
