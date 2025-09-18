@@ -23,10 +23,15 @@ document.getElementById("load").addEventListener("click", async () => {
         description.textContent = article.properties.Description.rich_text[0].plain_text;
         card.appendChild(description);
 
-        // Assuming an image property exists, you would render it similarly
-        // const image = document.createElement('img');
-        // image.src = article.properties.Image.files[0].file.url;
-        // card.appendChild(image);
+        if (article.properties.Image && article.properties.Image.files && article.properties.Image.files.length > 0) {
+          const image = document.createElement('img');
+          image.src = article.properties.Image.files[0].file.url;
+          image.style.width = '100%'; // Basic styling for the image
+          image.style.height = 'auto';
+          image.style.borderRadius = '4px';
+          image.style.marginBottom = '10px';
+          card.prepend(image); // Add image before title
+        }
 
         articlesContainer.appendChild(card);
       });
